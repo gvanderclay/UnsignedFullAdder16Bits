@@ -21,6 +21,14 @@ BEGIN add
     Output SIGNED(16) [2, -2^15, -2, 2^15-4]
     Overflow [0, 1, 0, 0]
 
+BEGIN add_overflow
+  INPUTS
+    InputA SIGNED(16) [1]
+    InputB SIGNED(16) [32767]
+  OUTPUTS
+    Output SIGNED(16) [-32768]
+    Overflow [1]
+
 BEGIN subtract
   INPUTS
     InputA SIGNED(16) [1, -3]
@@ -41,6 +49,15 @@ BEGIN mult_overflow2
     High [0x0017, 0xffe8] 
     Overflow [1, 1]
 
+BEGIN mult_edgecases
+ INPUTS
+    InputA SIGNED(16) -32768
+    InputB SIGNED(16) [1, 0]
+    Op 1
+ OUTPUTS
+    Output SIGNED(16) [-32768, 0]
+    Overflow [0, 0]
+
 #
 # WARNING:  Be sure to test pairs of values that 
 # (1) Will make the subtractor overflow
@@ -56,6 +73,15 @@ BEGIN less_than_signed
     Op 6
   OUTPUTS
     Output [0, 0, 1]
+    Overflow 0
+
+BEGIN less_than_signed_edge
+ INPUTS
+    InputA SIGNED(16) 3
+    InputB SIGNED(16) -32768
+    Op 6
+ OUTPUTS
+    Output 0
     Overflow 0
 
 BEGIN less_than_unsigned
