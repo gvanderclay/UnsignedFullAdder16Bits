@@ -21,6 +21,15 @@ BEGIN add
     Output SIGNED(16) [2, -2^15, -2, 2^15-4]
     Overflow [0, 1, 0, 0]
 
+BEGIN add1
+  INPUTS
+    InputA SIGNED(16) [48, 3002]
+    InputB SIGNED(16) [2442, 1102]
+    Op 0
+  OUTPUTS
+    Output SIGNED(16) [2490, 1150, 5444, 4102]
+    Overflow 0
+
 BEGIN add_overflow
   INPUTS
     InputA SIGNED(16) [1]
