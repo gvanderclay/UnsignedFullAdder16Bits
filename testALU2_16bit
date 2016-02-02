@@ -47,6 +47,32 @@ BEGIN subtract
     Output SIGNED(16) [2, -2^15+2, -2, 2^15-2]
     Overflow [0, 0, 0, 1]
 
+BEGIN subtract1
+  INPUTS
+    InputA SIGNED(16) [16, 68, 105]
+    InputB SIGNED(16) [14, 33, 7757]
+    Op 4
+  OUTPUTS
+    Output SIGNED(16) [2, -17, -7741, 54, 35, -7689, 91, 72, -7652]
+    Overflow 0
+
+BEGIN sub_overflow
+  INPUTS
+    InputA SIGNED(16) [1]
+    InputB SIGNED(16) [2]
+    Op 4
+  OUTPUTS
+    Output SIGNED(16) [-1]
+    Overflow [0]
+
+BEGIN multiply
+ INPUTS
+    InputA SIGNED(16) [1000, 24, -590]
+    InputB SIGNED(16) [5, 16, -30]
+    Op 1
+ OUTPUTS
+    Output SIGNED(16) [5000, 16000, -30000, 120, 384, -720, 2950, 9440, 17700]
+    Overflow 0
 
 BEGIN mult_overflow2
  INPUTS 
@@ -77,11 +103,11 @@ BEGIN mult_edgecases
 
 BEGIN less_than_signed
   INPUTS
-    InputA SIGNED(16) 5
-    InputB SIGNED(16) [-1, 4, 6]
+    InputA SIGNED(16) [5, 2000, 46]
+    InputB SIGNED(16) [-1, 4, 6, 240]
     Op 6
   OUTPUTS
-    Output [0, 0, 1]
+    Output [0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1]
     Overflow 0
 
 BEGIN less_than_signed_edge
@@ -95,11 +121,11 @@ BEGIN less_than_signed_edge
 
 BEGIN less_than_unsigned
   INPUTS
-    InputA 5
-    InputB [1, 4, 6]
+    InputA [5, 2000, 46]
+    InputB [1, 4, 6, 240]
     Op 7
   OUTPUTS
-    Output [0, 0, 1]
+    Output [0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1]
     Overflow 0
 
 
