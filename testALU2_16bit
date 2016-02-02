@@ -84,6 +84,15 @@ BEGIN less_than_signed_edge
     Output 0
     Overflow 0
 
+BEGIN less_than_signed_zero
+  INPUTS
+    InputA SIGNED(16) [0, -5]
+    InputB SIGNED(16) [0, -5]
+    Op 6
+  OUTPUTS
+    Output [0, 0, 1, 0]
+    Overflow 0
+
 BEGIN less_than_unsigned
   INPUTS
     InputA 5
